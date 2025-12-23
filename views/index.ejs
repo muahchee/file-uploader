@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>File uploader</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>File Uploader</h1>
+    <%- include("partials/error.ejs") %>
+    <% if (locals.currentUser) {%>
+    <p>Welcome, <%= currentUser.username %>!</p>
+    <a href="/logout">Logout</a>
+    <% } else {%>
+    <a href="/login">Login</a>
+    <% } %>
+  </header>
+  
+  <main>
+    <% if (locals.currentUser) {%>
+
+    <h2>Upload</h2>
+    <!-- TODO: make sure this works for multiple files -->
+    <form action="/upload" enctype="multipart/form-data" method="post">
+      <label for="uploadfile">Upload?</label>
+      <input type="file" id="uploadfile" name="uploadfile">
+      <button type="submit">Submit</button>
+    </form>
+
+    <% if (currentUser.files > 0) {%>
+    <h2>Files</h2>
+    <ul class="files">
+      <% for (let i = 0; i < files.length; i++) {%>
+      <li class="single-file">
+        <!-- TODO: link template -->
+        <a href=""><%= files[i].name %></a>
+        <p>Uploaded: <%= new Date(files[i].uploadedAt).toLocaleString() %></p>
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+    <% }
+</main>
+</body>
+
+
+</html>
