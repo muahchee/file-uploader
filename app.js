@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import passport from "passport";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
-
+import { prisma } from "./lib/prisma.js";
 
 dotenv.config();
 
@@ -19,6 +19,34 @@ app.use(e.static(assetsPath));
 app.use(urlencoded({ extended: true }));
 app.use(e.json());
 
+//-------auth stuff -----
+
+app.use(
+  session({
+    cookie: {
+      maxAge: 7 * 24 * 60 * 1000,
+    },
+    secret: process.env.SECRET,
+    resave: true,
+    saveUninitialized: true,
+    store: new PrismaSessionStore(prisma, {
+      checkPeriod: 2 * 60 * 1000,
+      dbRecordIdIsSessionId: true,
+      dbRecordIdFunction: undefined,
+    }),
+  })
+);
+
+app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+//--------routes-----------
+
+
+//---------port and error handling---------
 app.listen(PORT, (err) => {
   if (err) throw err;
   console.log(`Listening on port ${PORT}`);
