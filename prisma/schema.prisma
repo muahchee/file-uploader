@@ -22,11 +22,11 @@ model User {
 }
 
 model File {
-  id         Int      @id @default(autoincrement())
-  name       String   @unique
+  id           Int      @id @default(autoincrement())
+  name         String   @unique
   uploadedAt DateTime
-  User       User?    @relation(fields: [userId], references: [id])
-  userId     Int?
+  User         User?    @relation(fields: [userId], references: [id])
+  userId       Int?
 }
 
 model Session {
