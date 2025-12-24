@@ -5,26 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/styles.css">
-  <title>Login</title>
+  <title>Signup</title>
 </head>
 
 <body>
 
   <header>
-    <h1>Login</h1>
+    <h1>Signup</h1>
     <%- include("partials/error.ejs") %>
     <a href="/">Go Back</a>
   </header>
 
   <main>
-    <form action="/login" method="post">
+    <form action="/signup" method="post">
       <p>
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="<% if (locals.obj) { %><%= obj.username %><% } %>" required />
+        <input type="text" id="username" name="username" required />
       </p>
       <p>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
+      </p>
+      <p>
+        <label for="confirm-password">Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required />
+      </p>
+      <p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
       </p>
       <button type="submit">Submit</button>
     </form>

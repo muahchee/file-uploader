@@ -5,7 +5,9 @@ import passport from "passport";
 import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import { prisma } from "./lib/prisma.js";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+
+import { indexRouter } from "./routes/indexRouter.js";
 
 dotenv.config();
 
@@ -45,7 +47,26 @@ app.use((req, res, next) => {
 });
 
 //--------routes-----------
+app.use("/", indexRouter);
 
+//--login/logout--
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  })
+);
+app.get("/logout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
+});
 
 //---------port and error handling---------
 app.listen(PORT, (err) => {
