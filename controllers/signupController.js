@@ -17,7 +17,7 @@ const validateSignup = [
   body("email")
     .trim()
     .isEmail()
-    .optional({ values: falsy })
+    .optional({ values: "falsy" })
     .withMessage(
       "Email is not in a valid format. Expected format is 'user@email.com'"
     )

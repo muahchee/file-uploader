@@ -20,6 +20,7 @@
     <a href="/logout">Logout</a>
     <% } else {%>
     <a href="/login">Login</a>
+    <a href="/signup">Signup</a>
     <% } %>
 
   </header>
@@ -27,24 +28,24 @@
   <main>
     <% if (locals.currentUser) { %>
 
-    <h2>Upload</h2>
+    <h2>New Folder</h2>
     <!-- TODO: make sure this works for multiple files -->
-    <form action="/upload" enctype="multipart/form-data" method="post">
-      <label for="uploadfile">Upload?</label>
-      <input type="file" id="uploadfile" name="uploadfile">
+    <form action="/createfolder" method="post">
+      <label for="foldername">New Folder Name: </label>
+      <input type="text" id="foldername" name="foldername" required />
       <button type="submit">Submit</button>
     </form>
 
-    <% if (currentUser.files > 0) { %>
-    <h2>Files</h2>
-    <ul class="files">
-      <% for (let i = 0; i < files.length; i++) { %>
-      <li class="single-file">
+    <% if (currentUser.folders > 0) { %>
+    <h2>Folders</h2>
+    <ul class="folders">
+      <% for (let i = 0; i < folders.length; i++) { %>
+      <li class="single-folder">
 
         <!-- TODO: link template -->
-        <a href=""><%= files[i].name %></a>
+        <a href="/"><%= folders[i].name %></a>
 
-        <p>Uploaded: <%= new Date(files[i].uploadedAt).toLocaleString() %></p>
+        <p>Created: <%= new Date(folders[i].uploadedAt).toLocaleString() %></p>
 
       </li>
       <% } %>

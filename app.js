@@ -6,6 +6,7 @@ import session from "express-session";
 import { PrismaSessionStore } from "@quixo3/prisma-session-store";
 import { prisma } from "./lib/prisma.js";
 import dotenv from "dotenv";
+import "./lib/auth/passportConfig.js"
 
 import { indexRouter } from "./routes/indexRouter.js";
 
@@ -58,7 +59,7 @@ app.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/login",
   })
 );
 app.get("/logout", (req, res, next) => {
