@@ -26,10 +26,10 @@
   </header>
 
   <main>
+
     <% if (locals.currentUser) { %>
 
     <h2>New Folder</h2>
-    <!-- TODO: make sure this works for multiple files -->
     <form action="/createfolder" method="post">
       <label for="foldername">New Folder Name: </label>
       <input type="text" id="foldername" name="foldername" required />
@@ -47,9 +47,11 @@
 
         <p>Created: <%= new Date(folders[i].createdAt).toLocaleString() %></p>
 
-        <form action="/delete/<%= folders[i].id %>" method="post">
+        <form action="/deleteFolder/<%= folders[i].id %>" method="post">
           <button type="submit" onclick="return confirm('Are you sure you want to delete this folder?')">DELETE folder</button>
         </form>
+
+        <a href="/updateFolder/<%= folders[i].id %>">UPDATE folder</a>
 
       </li>
       <% } %>
