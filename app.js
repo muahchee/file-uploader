@@ -9,6 +9,7 @@ import dotenv from "dotenv";
 import "./lib/auth/passportConfig.js"
 
 import { indexRouter } from "./routes/indexRouter.js";
+import { deleteRouter } from "./routes/deleteRouter.js";
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ app.use((req, res, next) => {
 
 //--------routes-----------
 app.use("/", indexRouter);
+app.use("/delete", deleteRouter)
 
 //--login/logout--
 
