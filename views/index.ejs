@@ -43,7 +43,7 @@
       <li class="single-folder">
 
         <!-- TODO: link template -->
-        <a href="/"><%= folders[i].name %></a>
+        <a href="/folder/<%= folders[i].id %>"><%= folders[i].name %></a>
 
         <p>Created: <%= new Date(folders[i].createdAt).toLocaleString() %></p>
 

@@ -11,6 +11,7 @@ import "./lib/auth/passportConfig.js"
 import { indexRouter } from "./routes/indexRouter.js";
 import { deleteFolderRouter } from "./routes/deleteFolderRouter.js";
 import { updateFolderRouter } from "./routes/updateFolderRoute.js";
+import { readFolderRouter } from "./routes/readFolderRouter.js";
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/deleteFolder", deleteFolderRouter)
 app.use("/updateFolder", updateFolderRouter)
+app.use("/folder", readFolderRouter)
 
 //--login/logout--
 
