@@ -10,6 +10,7 @@ export async function createFilePost(req, res, next) {
     for (const file of filesArr) {
       await createFile({
         filename: file.filename,
+        filesize: file.size,
         folderId: folderId,
       });
     }

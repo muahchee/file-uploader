@@ -1,0 +1,99 @@
+body {
+  --colour1: #4b475c;
+  --colour2: #d7dedc;
+  --link: #77f7e6;
+  --visited: #f59fee;
+  background-color: var(--colour1);
+  color: var(--colour2);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  width: min(800px, 100vw);
+
+  padding: calc(10px + 2vw);
+  font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+    sans-serif;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding: 0 0 20px 0;
+
+  border-bottom: 2px dashed;
+}
+
+h1 {
+
+}
+
+header div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 20px;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+a {
+  color: var(--link);
+}
+
+a:visited {
+  color: var(--visited);
+}
+
+button,
+input {
+  cursor: pointer;
+}
+
+form:has(input#foldername),
+form:has(input#files) {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+ul {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  border: 2px solid;
+  padding: 20px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
