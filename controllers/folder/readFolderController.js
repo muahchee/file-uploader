@@ -4,7 +4,7 @@ export async function readFolderGet(req, res, next) {
   try {
     const folderId = Number(req.params.folderId)
     const filesArr = await getAllFiles(folderId);
-    const folder = await getFolderByFolderId(folderId);
+    const folder = await getFolderByFolderId(folderId, req.user.id);
 
     res.render("folder", {
       folder: folder,

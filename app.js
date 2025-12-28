@@ -13,6 +13,7 @@ import { deleteFolderRouter } from "./routes/folder/deleteFolderRouter.js";
 import { updateFolderRouter } from "./routes/folder/updateFolderRoute.js";
 import { readFolderRouter } from "./routes/folder/readFolderRouter.js";
 import { createFileRouter } from "./routes/file/createFileRouter.js";
+import { deleteFileRouter } from "./routes/file/deleteFileRouter.js";
 
 dotenv.config();
 
@@ -53,10 +54,13 @@ app.use((req, res, next) => {
 
 //--------routes-----------
 app.use("/", indexRouter);
+
 app.use("/deleteFolder", deleteFolderRouter)
 app.use("/updateFolder", updateFolderRouter)
 app.use("/folder", readFolderRouter)
+
 app.use("/uploadFile", createFileRouter)
+app.use("/deleteFile", deleteFileRouter)
 
 //--login/logout--
 
