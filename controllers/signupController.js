@@ -6,6 +6,7 @@ import {
 
 import { body, validationResult, matchedData } from "express-validator";
 import bcrypt from "bcryptjs";
+import fs from "fs/promises"
 
 const validateSignup = [
   body("username")
@@ -55,12 +56,19 @@ export const addUserPost = [
     });
 
     try {
+
+      //create user in db
       const hashedPw = await bcrypt.hash(password, 10);
       await createUser({
         username: username,
         email: email,
         password: hashedPw,
       });
+
+      //create user folder in storage
+      await fs.mkdir(process.cwd() + `/public/uploads/${username}`);
+
+
       res.redirect("/");
     } catch (err) {
       return next(err);

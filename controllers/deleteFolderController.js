@@ -10,8 +10,8 @@ export async function deleteFolderPost(req, res) {
     //delete in db
     await deleteFolderbyFolderId(folderId);
 
-    //delete in system
-    fs.rmdir(process.cwd() + `/public/uploads/${targetFoldername}`);
+    //delete in storage
+    fs.rmdir(process.cwd() + `/public/uploads/${req.user.username}/${targetFoldername}`);
 
     res.redirect("/");
   } catch (err) {

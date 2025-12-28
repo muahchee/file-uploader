@@ -59,10 +59,10 @@ export const updateFolderPost = [
       //change in db
       await changeFoldername(folderId, req.user.id, foldername);
 
-      //change in system
+      //change in storage
       await fs.rename(
-        process.cwd() + `/public/uploads/${targetFoldername}`,
-        process.cwd() + `/public/uploads/${foldername}`
+        process.cwd() + `/public/uploads/${req.user.username}/${targetFoldername}`,
+        process.cwd() + `/public/uploads/${req.user.username}/${foldername}`
       );
 
       res.redirect("/");

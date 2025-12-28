@@ -34,8 +34,8 @@ export const createFolderPost = [
     }
 
     try {
-      //create folder in system
-      await fs.mkdir(process.cwd() + `/public/uploads/${foldername}`);
+      //create folder in storage
+      await fs.mkdir(process.cwd() + `/public/uploads/${req.user.username}/${foldername}`);
 
       //create folder in db
       await createFolder({
