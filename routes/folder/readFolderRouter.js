@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { readFolderGet } from "../controllers/readFolderController.js";
+import { readFolderGet } from "../../controllers/folder/readFolderController.js";
 
 export const readFolderRouter = Router();
 

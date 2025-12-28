@@ -1,4 +1,4 @@
-import { getAllFiles, getFolderByFolderId } from "../lib/queries.js";
+import { getAllFiles, getFolderByFolderId } from "../../lib/queries.js";
 
 export async function readFolderGet(req, res, next) {
   try {

@@ -1,4 +1,4 @@
-import { deleteFolderbyFolderId, getFolderByFolderId } from "../lib/queries.js";
+import { deleteFolderbyFolderId, getFolderByFolderId } from "../../lib/queries.js";
 import fs from "fs/promises";
 
 export async function deleteFolderPost(req, res) {

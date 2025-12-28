@@ -2,7 +2,7 @@ import {
   changeFoldername,
   getFolderByFolderId,
   getFolderByFoldername,
-} from "../lib/queries.js";
+} from "../../lib/queries.js";
 import fs from "fs/promises";
 import { body, validationResult, matchedData } from "express-validator";
 

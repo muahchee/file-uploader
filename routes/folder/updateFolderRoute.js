@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { isUser } from "../lib/auth/authMiddle.js";
-import { updateFolderGet, updateFolderPost } from "../controllers/updateFolderController.js";
+import { isUser } from "../../lib/auth/authMiddle.js";
+import { updateFolderGet, updateFolderPost } from "../../controllers/folder/updateFolderController.js";
 
 
 export const updateFolderRouter = Router();

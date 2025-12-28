@@ -9,9 +9,9 @@ import dotenv from "dotenv";
 import "./lib/auth/passportConfig.js"
 
 import { indexRouter } from "./routes/indexRouter.js";
-import { deleteFolderRouter } from "./routes/deleteFolderRouter.js";
-import { updateFolderRouter } from "./routes/updateFolderRoute.js";
-import { readFolderRouter } from "./routes/readFolderRouter.js";
+import { deleteFolderRouter } from "./routes/folder/deleteFolderRouter.js";
+import { updateFolderRouter } from "./routes/folder/deleteFolderRouter.js";
+import { readFolderRouter } from "./routes/folder/readFolderRouter.js";
 
 dotenv.config();
 

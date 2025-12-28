@@ -3,7 +3,7 @@ import {
   createFolder,
   getFolderByFoldername,
   getAllFolders,
-} from "../lib/queries.js";
+} from "../../lib/queries.js";
 import { body, validationResult, matchedData } from "express-validator";
 
 const validateFoldername = [body("foldername").trim()];
