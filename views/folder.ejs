@@ -30,7 +30,7 @@
     <h2>Upload File</h2>
     <form action="/uploadFile/<%= folder.id %>" method="post" enctype="multipart/form-data">
       <label for="files">Upload file: </label>
-      <input type="files" id="files" name="files" required />
+      <input type="file" id="files" name="files" multiple required />
       <button type="submit">Submit</button>
     </form>
 
