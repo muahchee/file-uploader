@@ -1,4 +1,8 @@
-import { deleteFolderbyFolderId, getFolderByFolderId } from "../../lib/queries.js";
+import {
+  deleteAllFilesbyFolderId,
+  deleteFolderbyFolderId,
+  getFolderByFolderId,
+} from "../../lib/queries.js";
 import fs from "fs/promises";
 
 export async function deleteFolderPost(req, res) {
@@ -8,10 +12,18 @@ export async function deleteFolderPost(req, res) {
 
   try {
     //delete in db
+    await deleteAllFilesbyFolderId(folderId)
     await deleteFolderbyFolderId(folderId);
-
+    
     //delete in storage
-    fs.rmdir(process.cwd() + `/public/uploads/${req.user.username}/${targetFoldername}`);
+    fs.rmdir(
+      process.cwd() +
+        `/public/uploads/${req.user.username}/${targetFoldername}`,
+      { recursive: true },
+      (err) => {
+        throw new Error(err);
+      }
+    );
 
     res.redirect("/");
   } catch (err) {
