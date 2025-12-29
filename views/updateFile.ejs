@@ -4,25 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../../styles/styles.css">
   <title>Update <%= file.name %></title>
 </head>
 
 <body>
 
   <header>
-    <h1>Update Folder</h1>
+    <h1>Update  <%= file.name %></h1>
     <%- include("partials/error.ejs") %>
-    <a href="/">Go Back</a>
+    <a href="/folder/<%= currentFolder.id %>">Go Back</a>
   </header>
-  <!-- todo: add obj -->
   <main>
     <% if (locals.currentUser) { %>
 
-    <form action="/updateFile/<%= file.id %>" method="post">
+    <form action="/updateFile/<%= currentFolder.id %>/<%= file.id %>" method="post">
       <p>
-        <label for="foldername">New Folder Name:</label>
-        <input type="text" id="foldername" name="foldername" value="<% if (originalName) { %><%= originalName %><% } %>" required />
+        <label for="newFilename">New File Name:</label>
+        <input type="text" id="newFilename" name="newFilename" value="<%= file.name %>" required />
+      </p>
+      <p>
+        <label for="targetFolderId">Move to different folder:</label>
+        <select name="newFolderId" id="newFolderId">
+          <option value="<%= currentFolder.id %>"><%= currentFolder.name %></option>
+          <% for(let i = 0; i < folders.length; i++) { %>
+            <% if (folders[i].id === currentFolder.id) continue //skip current folder %>
+            <option value="<%= folders[i].id %>"><%= folders[i].name %></option>
+          <% } %>
+        </select>
       </p>
       <button type="submit">Submit</button>
     </form>

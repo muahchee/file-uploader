@@ -25,7 +25,6 @@ export const createFolderPost = [
 
     //validate folder exists (need req.user so I can't put it in the validator on top)
     const folder = await getFolderByFoldername(foldername, req.user.id);
-    console.log(folder);
     if (folder) {
       return res.status(400).render("index", {
         errors: [{ msg: "Folder name already exists!" }],

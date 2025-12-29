@@ -9,7 +9,6 @@ import { body, validationResult, matchedData } from "express-validator";
 export async function updateFolderGet(req, res) {
   const folderId = Number(req.params.id);
   const folder = await getFolderByFolderId(folderId, req.user.id);
-  console.log(folder);
   const foldername = folder.name;
   res.render("updateFolder", {
     originalName: foldername,

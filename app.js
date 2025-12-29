@@ -14,6 +14,7 @@ import { updateFolderRouter } from "./routes/folder/updateFolderRoute.js";
 import { readFolderRouter } from "./routes/folder/readFolderRouter.js";
 import { createFileRouter } from "./routes/file/createFileRouter.js";
 import { deleteFileRouter } from "./routes/file/deleteFileRouter.js";
+import { updateFileRouter } from "./routes/file/updateFileRouter.js";
 
 dotenv.config();
 
@@ -61,6 +62,7 @@ app.use("/folder", readFolderRouter)
 
 app.use("/uploadFile", createFileRouter)
 app.use("/deleteFile", deleteFileRouter)
+app.use("/updateFile", updateFileRouter)
 
 //--login/logout--
 
