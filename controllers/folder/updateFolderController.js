@@ -40,15 +40,9 @@ export const updateFolderPost = [
       foldername,
       req.user.id
     );
-    console.log(folderCheck)
-    if (targetFoldername === foldername) {
-      return res.status(400).render("updateFolder", {
-        errors: [{ msg: "Folder name is still the same." }],
-        folderId: folderId,
-        originalName: targetFoldername,
-      });
-    }
-    if (folderCheck) {
+
+    //if folder exists and is different from the target folder (this allows renaming with the same name)
+    if (folderCheck && targetFoldername !== foldername) {
       return res.status(400).render("updateFolder", {
         errors: [{ msg: "Folder name already exists!" }],
         folderId: folderId,
