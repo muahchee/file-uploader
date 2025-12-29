@@ -8,7 +8,7 @@ import {
 } from "../../lib/queries.js";
 
 import { body, matchedData, validationResult } from "express-validator";
-import fs from "fs/promises";
+import { supabase } from "../../lib/supabaseConfig.js";
 
 export async function updateFileGet(req, res, next) {
   const folderId = Number(req.params.folderId);
@@ -73,12 +73,10 @@ export const updateFilePost = [
     }
 
     try {
-      //change in storage
-      await fs.rename(
-        process.cwd() +
-          `/public/uploads/${req.user.username}/${currentFolder.name}/${currentFile.name}`,
-        process.cwd() +
-          `/public/uploads/${req.user.username}/${newFolder.name}/${newFilename}`
+      //change in supabase
+      await supabase.move(
+        `${req.user.username}/${currentFolder.name}/${currentFile.name}`,
+        `${req.user.username}/${newFolder.name}/${newFilename}`
       );
 
       //change in db
