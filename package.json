@@ -26,6 +26,8 @@
     "@prisma/adapter-pg": "^7.2.0",
     "@prisma/client": "^6.19.1",
     "@quixo3/prisma-session-store": "^3.1.13",
+    "@supabase/supabase-js": "^2.89.0",
+    "base64-arraybuffer": "^1.0.2",
     "bcryptjs": "^3.0.3",
     "connect-pg-simple": "^10.0.0",
     "dotenv": "^17.2.3",

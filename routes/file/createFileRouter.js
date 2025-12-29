@@ -5,4 +5,6 @@ import { isUser } from "../../lib/auth/authMiddle.js";
 
 export const createFileRouter = Router();
 
-createFileRouter.post("/:folderId", isUser, upload.array("files"), createFilePost);
+const multerUpload = upload.array("files")
+
+createFileRouter.post("/:folderId", isUser, multerUpload, createFilePost);
