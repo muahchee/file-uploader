@@ -43,7 +43,6 @@ export async function createFilePost(req, res, next) {
         contentType: file.mimetype,
       });
       const publicUrl = supabase.getPublicUrl(supabasePath).data.publicUrl;
-      console.log(publicUrl);
 
       await createFile({
         filename: filename,

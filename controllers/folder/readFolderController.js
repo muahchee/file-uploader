@@ -1,4 +1,5 @@
-import { getAllFiles, getFolderByFolderId } from "../../lib/queries.js";
+import { getAllFiles, getFileByFileId, getFolderByFolderId } from "../../lib/queries.js";
+import { supabase } from "../../lib/supabaseConfig.js";
 
 export async function readFolderGet(req, res, next) {
   try {
@@ -14,3 +15,4 @@ export async function readFolderGet(req, res, next) {
     next(err);
   }
 }
+

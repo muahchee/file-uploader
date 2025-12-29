@@ -32,7 +32,7 @@ model File {
   uploadedAt DateTime @default(now())
   folder     Folder?  @relation(fields: [folderId], references: [id])
   folderId   Int?
-  url        String   @default("/")
+  url        String   
 }
 
 model Session {

@@ -54,7 +54,7 @@
 
         <p><a href="/updateFile/<%= folder.id %>/<%= files[i].id %>">UPDATE file</a></p>
 
-        <p><a href="../uploads/<%= currentUser.username %>/<%= folder.name %>/<%= files[i].name %>" download="<%= files[i].name %>">Download File</a></p>
+        <p><a href="<%= files[i].url %>">Download File</a></p>
 
       </li>
       <% } %>
