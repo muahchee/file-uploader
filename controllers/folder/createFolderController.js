@@ -1,4 +1,3 @@
-import fs from "fs/promises";
 import {
   createFolder,
   getFolderByFoldername,
@@ -33,9 +32,6 @@ export const createFolderPost = [
     }
 
     try {
-      //create folder in storage
-      await fs.mkdir(process.cwd() + `/public/uploads/${req.user.username}/${foldername}`);
-
       //create folder in db
       await createFolder({
         foldername: foldername,

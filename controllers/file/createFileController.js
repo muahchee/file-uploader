@@ -14,7 +14,6 @@ export async function createFilePost(req, res, next) {
 
   try {
     //create file in db
-    //multer creates files in storage
     for (const file of filesArr) {
       //validate name
       let filename = file.originalname;

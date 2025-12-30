@@ -6,8 +6,6 @@ import {
 
 import { body, validationResult, matchedData } from "express-validator";
 import bcrypt from "bcryptjs";
-import fs from "fs/promises";
-import { supabase } from "../lib/supabaseConfig.js";
 
 const validateSignup = [
   body("username")
@@ -64,12 +62,6 @@ export const addUserPost = [
         email: email,
         password: hashedPw,
       });
-
-      //create user folder in storage
-      await fs.mkdir(process.cwd() + `/public/uploads/${username}`);
-
-      //create user folder in supabase
-      // const {data, error} = await supabase.storage.createBucket(username);
 
       res.redirect("/");
     } catch (err) {
