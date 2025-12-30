@@ -42,7 +42,7 @@
       <% for (let i = 0; i < files.length; i++) { %>
       <li class="single-folder">
 
-        <h3><a href="<%= files[i].url %>"><%= files[i].name %></a></h3>
+        <h3><%= files[i].name %></h3>
 
         <p>~<%= (files[i].size / 1000).toFixed(1) %>KB</p>
 
@@ -54,7 +54,7 @@
 
         <p><a href="/updateFile/<%= folder.id %>/<%= files[i].id %>">UPDATE file</a></p>
 
-        <p><a href="<%= files[i].url %>">Download File</a></p>
+        <p><a href="/downloadFile/<%= folder.id %>/<%= files[i].id %>">Download/View file</a></p>
 
       </li>
       <% } %>
