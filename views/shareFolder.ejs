@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title><%= foldername %> Share Link</title>
+</head>
+
+<body>
+
+  <header>
+
+    <%- include("partials/error.ejs") %>
+
+    <h1><%= foldername %> Share Link</h1>
+    <p>Link expiry: <%= new Date(expiryDate).toLocaleString() %></p>
+
+  </header>
+
+  <main>
+    <% if (sharedFiles.length > 0) { %>
+    <h2>Files</h2>
+    <ul class="files">
+      <% for (let i = 0; i < sharedFiles.length; i++) { %>
+      <li class="single-folder">
+
+        <h3><%= sharedFiles[i].name %></h3>
+
+        <p>~<%= (sharedFiles[i].size / 1000).toFixed(1) %>KB</p>
+
+        <p><a href="/downloadFile/<%= folder.id %>/<%= sharedFiles[i].id %>">Download/View file</a></p>
+
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </main>
+</body>
+
+
+</html>

@@ -23,6 +23,7 @@ model Folder {
   user      User?    @relation(fields: [userId], references: [id])
   userId    Int?
   files     File[]
+  Shares    Share[]
 }
 
 model File {
@@ -32,7 +33,16 @@ model File {
   uploadedAt DateTime @default(now())
   folder     Folder?  @relation(fields: [folderId], references: [id])
   folderId   Int?
-  url        String   
+  url        String
+}
+
+model Share {
+  id        Int      @id @default(autoincrement())
+  code      String
+  folder    Folder   @relation(fields: [folderId], references: [id])
+  folderId  Int
+  createdAt DateTime @default(now())
+  duration  Int
 }
 
 model Session {
