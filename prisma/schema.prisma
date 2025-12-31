@@ -37,12 +37,12 @@ model File {
 }
 
 model Share {
-  id        Int      @id @default(autoincrement())
-  code      String   @unique
-  folder    Folder   @relation(fields: [folderId], references: [id])
-  folderId  Int
-  createdAt DateTime @default(now())
-  duration  Int ///milliseconds (remember to convert from seconds (* 1000))
+  id              Int      @id @default(autoincrement())
+  code            String   @unique
+  folder          Folder   @relation(fields: [folderId], references: [id])
+  folderId        Int
+  createdAt       DateTime @default(now())
+  durationSeconds Int ///seconds
 }
 
 model Session {

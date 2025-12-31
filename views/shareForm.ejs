@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>File uploader</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Create Share Link for <%= folder.name %></h1>
+
+  </header>
+
+  <main>
+
+    <%- include("partials/error.ejs") %>
+    <% if (locals.currentUser) { %>
+
+    <form action="/shareForm/<%= folder.id %>" method="post">
+      <label for="durationMinutes">How long until the link expires? (in minutes)</label>
+      <input type="number" id="durationMinutes" name="durationMinutes" min="1" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <p>Reference:</p>
+    <ul>
+      <li>1 day is 1440 minutes</li>
+      <li>1 week is 10080 minutes</li>
+    </ul>
+    <% } %>
+  </main>
+</body>
+
+
+</html>

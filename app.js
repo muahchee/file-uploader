@@ -16,7 +16,9 @@ import { createFileRouter } from "./routes/file/createFileRouter.js";
 import { deleteFileRouter } from "./routes/file/deleteFileRouter.js";
 import { updateFileRouter } from "./routes/file/updateFileRouter.js";
 import { downloadFileRouter } from "./routes/file/downloadFileRouter.js";
-import { shareFolderRouter } from "./routes/folder/shareFolderRouter.js";
+import { shareFolderRouter } from "./routes/share/shareFolderRouter.js";
+import { shareFormRouter } from "./routes/share/shareFormRouter.js";
+import { shareHistoryRouter } from "./routes/share/shareHistory.js";
 
 dotenv.config();
 
@@ -63,6 +65,8 @@ app.use("/updateFolder", updateFolderRouter)
 app.use("/folder", readFolderRouter)
 
 app.use("/share", shareFolderRouter)
+app.use("/shareForm", shareFormRouter)
+app.use("/shareHistory", shareHistoryRouter)
 
 app.use("/uploadFile", createFileRouter)
 app.use("/deleteFile", deleteFileRouter)
