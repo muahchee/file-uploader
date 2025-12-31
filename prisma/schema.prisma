@@ -38,11 +38,11 @@ model File {
 
 model Share {
   id        Int      @id @default(autoincrement())
-  code      String
+  code      String   @unique
   folder    Folder   @relation(fields: [folderId], references: [id])
   folderId  Int
   createdAt DateTime @default(now())
-  duration  Int
+  duration  Int ///milliseconds (remember to convert from seconds (* 1000))
 }
 
 model Session {

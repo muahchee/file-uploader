@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <title>Share History</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include("partials/error.ejs") %>
+    <h1>Share History</h1>
+  </header>
+
+  <main>
+    <% if (shares.length > 0) { %>
+    <ul class="shares">
+      <% for (let i = 0; i < shares.length; i++) { %>
+      <li class="single-folder">
+
+        <h3><%= shares[i].foldername %></h3>
+
+        <p>Code: <%= shares[i].code %></p>
+        <p>Created At: <%= new Date(shares[i].createdAt).toLocaleString() %></p>
+        <p>Expires At: <%= new Date(shares[i].expiresAt).toLocaleString() %></p>
+
+      </li>
+      <% } %>
+    </ul>
+    <% } %>
+  </main>
+</body>
+
+
+</html>

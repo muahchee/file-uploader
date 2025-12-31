@@ -14,8 +14,8 @@
 
     <%- include("partials/error.ejs") %>
 
-    <h1><%= foldername %> Share Link</h1>
-    <p>Link expiry: <%= new Date(expiryDate).toLocaleString() %></p>
+    <h1><%= sharedFolder.foldername %> Share Link</h1>
+    <p>Link expiry: <%= new Date(sharedFolder.expiresAt).toLocaleString() %></p>
 
   </header>
 
@@ -30,7 +30,7 @@
 
         <p>~<%= (sharedFiles[i].size / 1000).toFixed(1) %>KB</p>
 
-        <p><a href="/downloadFile/<%= folder.id %>/<%= sharedFiles[i].id %>">Download/View file</a></p>
+        <p><a href="/downloadFile/<%= sharedFolder.folderId %>/<%= sharedFiles[i].id %>">Download file</a></p>
 
       </li>
       <% } %>
