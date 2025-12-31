@@ -23,8 +23,10 @@
 
         <h3><%= shares[i].foldername %></h3>
 
-        <p>Code: <%= shares[i].code %></p>
+        <p>URL: <a href="/shareFolder/<%= shares[i].code %>">/shareFolder/<%= shares[i].code %></a></p>
+
         <p>Created At: <%= new Date(shares[i].createdAt).toLocaleString() %></p>
+
         <p>Expires At: <%= new Date(shares[i].expiresAt).toLocaleString() %></p>
 
       </li>

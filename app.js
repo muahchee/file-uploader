@@ -64,7 +64,7 @@ app.use("/deleteFolder", deleteFolderRouter)
 app.use("/updateFolder", updateFolderRouter)
 app.use("/folder", readFolderRouter)
 
-app.use("/share", shareFolderRouter)
+app.use("/shareFolder", shareFolderRouter)
 app.use("/shareForm", shareFormRouter)
 app.use("/shareHistory", shareHistoryRouter)
 

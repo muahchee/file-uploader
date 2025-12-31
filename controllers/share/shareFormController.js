@@ -15,14 +15,11 @@ export async function shareFormGet(req, res, next) {
 }
 
 const validateDuration = [
-  body("durationMinutes")
-    .custom(async (value) => {
-      if (value < 1 || value > 10080) {
-        throw new Error(
-          "Duration should be minimum 1 minute and maximum 1 week"
-        );
-      }
-    }),
+  body("durationMinutes").custom(async (value) => {
+    if (value < 1 || value > 10080) {
+      throw new Error("Duration should be minimum 1 minute and maximum 1 week");
+    }
+  }),
 ];
 
 export const shareFormPost = [
@@ -49,7 +46,7 @@ export const shareFormPost = [
         folderId: folderId,
         durationSeconds: durationSeconds,
       });
-      res.redirect("/")
+      res.redirect(`/shareFolder/${code}`);
     } catch (err) {
       next(err);
     }

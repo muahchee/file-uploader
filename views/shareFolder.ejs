@@ -5,21 +5,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../styles/styles.css">
-  <title><%= foldername %> Share Link</title>
+  <title>Share Link</title>
 </head>
 
 <body>
-
   <header>
-
-    <%- include("partials/error.ejs") %>
-
+    <a href="/">back to main</a>
+    <% if (locals.sharedFolder) {%>
     <h1><%= sharedFolder.foldername %> Share Link</h1>
     <p>Link expiry: <%= new Date(sharedFolder.expiresAt).toLocaleString() %></p>
-
+    <% } %>
   </header>
 
   <main>
+    <%- include("partials/error.ejs") %>
+    <% if (locals.sharedFolder && locals.sharedFiles) {%>
     <% if (sharedFiles.length > 0) { %>
     <h2>Files</h2>
     <ul class="files">
@@ -36,6 +36,7 @@
       <% } %>
     </ul>
     <% } %>
+    <% }%>
   </main>
 </body>
 
